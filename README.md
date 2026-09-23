@@ -1,10 +1,6 @@
-# Kubernetes & kubectl Cheat Sheet
+## Cluster Information & Context
 
-Quick-reference commands recorded from local development and lab practice.
 
----
-
-## 1. Cluster Information & Context
 ```bash
 # View local Kind clusters
 kind get clusters
@@ -15,19 +11,23 @@ kubectl cluster-info
 # View kubeconfig file (PowerShell)
 cat .\.kube\config
 
-
 # Set alias for kubectl
 alias k="kubectl"
 
-# General kubectl help
-kubectl --help
+---
 
-# Help options for the 'get' command
-kubectl get --help
+
+### Important Note for Windows PowerShell:
+In standard PowerShell on Windows, the Linux-style command `alias k="kubectl"` will give an error. If you are using PowerShell in your terminal[cite: 5, 6], the native PowerShell equivalent is:
+
+
+```powershell
+Set-Alias -Name k -Value kubectl
 
 
 # List all namespaces
 kubectl get ns
+
 
 # Run a single Nginx pod imperatively
 kubectl run nginx --image=nginx
@@ -53,6 +53,7 @@ kubectl delete pod nginx
 # Delete an individual pod managed by a Deployment/ReplicaSet
 kubectl delete pod my-app-57f9cc845b-8pgbv
 
+
 # Dry run a deployment (client-side validation without applying)
 kubectl create deployment my-app --image=nginx --dry-run=client
 
@@ -67,3 +68,4 @@ kubectl get deploy
 
 # List replica sets
 kubectl get replicaset
+
